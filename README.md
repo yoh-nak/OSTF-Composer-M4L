@@ -1,26 +1,52 @@
 # OSTF Composer for Max for Live
 
-OSTF Composer is a Max for Live songwriting and arrangement tool built around the Open Song Timeline Format (OSTF).
+**OSTF Composer** is a Max for Live songwriting, harmony, voicing, and MIDI workflow tool built around the **Open Song Timeline Format (OSTF)**.
 
-It is designed for composers, songwriters, arrangers, and producers who want to create chord progressions, generate voicings, capture MIDI from Ableton Live, reconstruct song sections, and move musical ideas between OSTF and Live.
+It is designed for composers, songwriters, arrangers, and producers who want to build song structures, create chord progressions, generate playable voicings, capture MIDI from Ableton Live, reconstruct song sections, and move structured musical ideas between OSTF and Live.
 
-The device combines song structure, harmony generation, voicing tools, MIDI capture, and Live clip output in a single workflow.
+OSTF Composer combines:
 
-## Features
+- Song structure editing
+- Whole-song chord composition
+- Section-level harmony generation
+- Voicing generation and editing
+- MIDI capture from Ableton Live
+- Section reconstruction
+- MIDI output back to Live
+- OSTF 3.x / 4.x compatibility
+- Non-destructive OSTF data preservation
 
-### OSTF-based songwriting workflow
+Version **1.1** focuses on OSTF 4 compatibility, a more structured Voicing Studio workflow, improved Live output placement, and stability.
 
-- Create and edit song sections
-- Build song structures such as Intro, Verse, Pre-Chorus, Chorus, Bridge, Final Chorus, Outro, and custom sections
-- Edit section lengths and chord timelines
-- Preserve OSTF song structure while editing
-- Work with OSTF 3.5 metadata and song information
+---
 
-### Whole-song chord composition
+# Features
 
-Use **Compose Whole Song** to generate chord progression ideas for the entire arrangement.
+## OSTF-based songwriting workflow
 
-Generation can take into account:
+Create and edit structured songs using OSTF.
+
+You can:
+
+- Create and rename song sections
+- Build structures such as Intro, Verse, Pre-Chorus, Chorus, Bridge, Final Chorus, Outro, and custom sections
+- Change section lengths
+- Edit chord timelines
+- Reorder song sections
+- Duplicate and delete sections
+- Preserve surrounding OSTF song data while editing
+- Work with song-level key, tempo, meter, genre, and metadata
+- Save edited songs back to OSTF
+
+OSTF Composer is intended to edit the musical information it understands while preserving unrelated OSTF information wherever possible.
+
+---
+
+# Whole-Song Chord Composition
+
+Use **Compose song** to generate chord progression ideas across the complete arrangement.
+
+Generation can take into account musical context such as:
 
 - Genre
 - Mood
@@ -28,23 +54,26 @@ Generation can take into account:
 - Harmonic depth
 - Section roles
 - Local key maps
-- Neighboring progressions
+- Neighboring sections
 - Pattern focus
 - Variation level
+- Harmonic continuity
 
-Multiple progression ideas can be generated and compared before applying them.
+Multiple progression ideas can be generated and compared before committing changes.
 
-Each progression idea can be auditioned directly before committing changes.
+Progressions can be auditioned before they are applied.
 
-The progression cards show the harmonic shape of the song section by section, making it easier to compare ideas visually.
+The whole-song workflow is designed to consider the relationship between sections rather than treating every section as an isolated four-chord loop.
 
-### Section Composer
+---
 
-Generate and develop chord progressions for individual sections.
+# Section Composer
 
-Section Composer provides multiple approaches for exploring harmony, including:
+Section Composer provides more detailed harmonic development for individual song sections.
 
-- Automatic suggestions
+Available approaches include:
+
+- Automatic progression suggestions
 - Harmonic function
 - Emotional direction
 - Bass movement
@@ -54,33 +83,65 @@ Section Composer provides multiple approaches for exploring harmony, including:
 - Modulation
 - Reverse analysis
 
-Generated ideas can be auditioned before being applied.
+Generated ideas can be auditioned before being committed.
 
-### Voicing Studio
+This makes it possible to establish the overall structure with Whole-Song Composition and then refine individual sections where necessary.
 
-Generate and edit playable chord voicings based on the current chord progression.
+---
 
-Features include:
+# Voicing Studio
+
+Voicing Studio generates and edits playable chord voicings based on the current OSTF chord progression.
+
+Version 1.1 reorganizes Voicing Studio so that major tasks, secondary controls, and output operations are more clearly separated.
+
+Main capabilities include:
 
 - Whole-song voicing generation
+- Candidate generation
+- Candidate audition
+- Original / Candidate comparison
+- Per-section adoption
 - Left-hand / right-hand arrangement
-- Bass rules
-- Voice-leading control
-- Top-note movement
+- Bass control
+- Top-note control
 - Tension handling
+- Voice-leading control
 - Guide-tone prioritization
-- Fifth omission when needed
+- Fifth omission when necessary
 - Avoid-note warnings
 - Melody clearance
-- Candidate comparison
-- Audition before commit
-- Per-section adoption
+- Register control
+- Manual piano-roll editing
+- Commit / discard workflow
 
-The piano-roll editor displays harmonic roles using different colors so roots, thirds, fifths, sevenths, tensions, and other notes can be distinguished visually.
+Related pitch controls are grouped together instead of being treated as unrelated top-level modes.
 
-### Piano-roll editing
+MIDI Capture remains a separate workflow and is not mixed automatically into generated voicings.
 
-The built-in piano roll allows detailed editing of generated voicings.
+---
+
+# Voicing comparison workflow
+
+Whole-song voicing ideas can be generated without immediately replacing the current arrangement.
+
+A typical workflow is:
+
+1. Generate voicing candidates.
+2. Audition the original version.
+3. Audition a candidate.
+4. Compare the musical result.
+5. Choose which sections should adopt the candidate.
+6. Commit the selected result.
+7. Undo if necessary.
+
+This allows voicing generation to remain exploratory until the user explicitly commits the result.
+
+---
+
+# Piano-roll editing
+
+The built-in piano roll allows detailed editing of generated and committed voicings.
 
 You can:
 
@@ -89,73 +150,157 @@ You can:
 - Add notes
 - Delete notes
 - Edit chord tones
+- Audition changes
 - Commit chord changes
-- Audition edited chords
-- Lock chord structures
-- Work with individual sections or the whole song
+- Work with individual sections
+- Work with the whole song
 
-### MIDI Capture from Ableton Live
+Notes are visually differentiated by harmonic function so that roots, thirds, fifths, sevenths, tensions, and other chord roles are easier to identify.
 
-OSTF Composer can capture MIDI directly from a selected Ableton Live MIDI clip.
+When chord information changes, harmonic interpretation can be updated accordingly.
 
-Captured MIDI is analyzed without modifying the original Live clip.
+---
 
-The Capture workspace allows you to:
+# MIDI Capture from Ableton Live
+
+OSTF Composer can capture MIDI from a selected Ableton Live MIDI clip.
+
+The original Live clip remains read-only.
+
+The Capture workflow can:
 
 - Read MIDI from Live
+- Display captured MIDI
 - Analyze detected chords
-- Select ranges directly on the piano roll
-- Assign selected ranges to OSTF sections
+- Select ranges from the captured material
+- Assign ranges to OSTF sections
 - Create new sections
 - Extend existing sections
-- Insert sections before or after another section
-- Reconstruct an OSTF song from existing MIDI material
+- Insert sections before or after existing sections
+- Reconstruct an OSTF song structure from existing MIDI
 
-The source MIDI remains read-only.
+Captured MIDI is intentionally kept separate from Voicing Studio data.
 
-### Section reconstruction
+Version 1.1 retains the established MIDI Capture workflow without major structural changes.
 
-Captured MIDI ranges can be assigned progressively to song sections.
+---
 
-This makes it possible to take an existing MIDI progression from Live and reconstruct its song structure inside OSTF.
+# Section reconstruction
+
+Captured MIDI can be progressively assigned to OSTF song sections.
 
 Typical workflow:
 
-1. Select a MIDI clip in Ableton Live.
-2. Capture the MIDI.
-3. Select a range in the Capture Timeline.
-4. Assign it to an existing OSTF section or create a new section.
-5. Repeat for the remaining parts of the song.
-6. Commit the assignments.
+1. Select or open a MIDI clip in Ableton Live.
+2. Open the MIDI Capture workspace.
+3. Capture the MIDI.
+4. Select a range in the Capture Timeline.
+5. Assign the range to an existing OSTF section or create a new one.
+6. Repeat for additional ranges.
+7. Review the reconstructed structure.
+8. Commit the assignments.
 
-### Send MIDI back to Ableton Live
+This makes it possible to take an existing MIDI chord progression and reconstruct its structural representation inside OSTF.
 
-Generated and edited MIDI can be written back to Ableton Live.
+---
 
-OSTF Composer supports:
+# Capture overlay
 
-- Writing to an existing selected MIDI clip
-- Creating a new MIDI clip
-- Choosing the destination MIDI track
-- Whole-song output
-- Selected-range output
+Captured source MIDI and generated Voicing Studio notes are kept separate by default.
+
+Captured MIDI is **not automatically mixed into the Voicing Studio piano roll**.
+
+A Capture overlay can be enabled when comparison is useful.
+
+This avoids confusion between:
+
+- Captured source material
+- Generated candidates
+- Committed voicings
+
+---
+
+# Send MIDI to Ableton Live
+
+Voicing Studio can send generated and edited MIDI directly back to Ableton Live.
+
+Two output approaches are supported.
+
+## Append to a selected MIDI clip
+
+When an existing compatible MIDI clip is selected, OSTF Composer can add the generated notes to that clip.
+
+Existing notes are preserved.
+
+This is an **append operation**, not a destructive replacement operation.
+
+The insertion point can be specified by clip bar so that generated material can be added at a defined location inside the selected clip.
+
+For example:
+
+- Clip bar 1
+- Clip bar 5
+- Clip bar 17
+
+Existing notes are not automatically deleted.
+
+Safety checks prevent obviously conflicting or invalid writes where possible.
+
+## Create a new MIDI clip
+
+OSTF Composer can also create a new MIDI clip on a selected Live MIDI track.
+
+Options include:
+
+- Destination MIDI track
+- Output scope
 - Arrangement placement
-- Clip splitting options
-- Output review before writing
+- Clip splitting behavior
+- Start position
+- Specific Live bar
 
-The device verifies Live output where possible before reporting success.
+For Arrangement output, a specific Live bar can be entered.
 
-### Capture overlay
+For example:
 
-Captured MIDI and generated voicings are intentionally separated.
+**Live start bar: 37**
 
-Captured MIDI is not automatically mixed into the Voicing Studio piano roll.
+will place the new output beginning at bar 37 in the Arrangement.
 
-If needed, the Capture overlay can be enabled manually for comparison.
+OSTF Composer attempts to avoid silently overwriting existing Arrangement clips.
 
-This prevents captured source notes from being mistaken for generated or committed voicing notes.
+If the intended range conflicts with an existing clip, the write can be blocked instead of replacing existing material.
 
-### Transposition
+---
+
+# Output scope
+
+Depending on the current editing context, MIDI output can target different ranges, including:
+
+- Whole song
+- Current section
+- Selected chord range
+
+Output information is shown before writing where possible.
+
+---
+
+# MIDI file export
+
+OSTF Composer v1.1 does **not** include direct Standard MIDI File export.
+
+An experimental MIDI export implementation was evaluated during development but was removed before the v1.1 release because it did not meet the required stability standard.
+
+For reliable MIDI file export:
+
+1. Send the MIDI to Ableton Live.
+2. Use Ableton Live's standard MIDI clip export workflow.
+
+This keeps file export outside OSTF Composer's Live API and Max file-writing path.
+
+---
+
+# Transposition
 
 OSTF Composer includes transposition tools designed to preserve OSTF structure.
 
@@ -166,88 +311,163 @@ Depending on the source data, transposition can update:
 - Performance notes
 - Key-related information
 
-OSTF 3.5 `fixedTrigger` notes and drum-oriented trigger data are not transposed.
+Data that should not follow harmonic transposition can remain unchanged.
 
-When data cannot be safely transformed, OSTF Composer prefers to stop rather than silently damage the song.
+When a transformation cannot be performed safely, OSTF Composer prefers to stop or preserve the original information rather than silently damage the song.
 
-### Undo and Redo
+---
 
-Editing operations are designed to support Undo and Redo where possible.
+# Undo and Redo
 
-This includes chord edits, voicing changes, song operations, and other editing actions.
+Editing operations support Undo and Redo where possible.
 
-## Typical workflow
+This includes operations such as:
 
-A common OSTF Composer workflow is:
+- Chord changes
+- Voicing changes
+- Song structure operations
+- Candidate commits
+- Other Composer editing actions
 
-1. Create a song structure.
-2. Generate whole-song chord progression ideas.
-3. Audition and select a progression.
-4. Refine individual sections with Section Composer.
-5. Generate whole-song voicings.
-6. Edit voicings in the piano roll.
-7. Send MIDI to Ableton Live.
-8. Continue editing in Live.
-9. Capture edited MIDI back into OSTF Composer if needed.
-10. Reconstruct or update the OSTF structure.
-11. Save the result as an OSTF file.
+Undo behavior is intentionally tied to committed editing operations rather than temporary audition states.
 
-This allows OSTF Composer to work as a bridge between structured composition and practical DAW production.
+---
 
-## OSTF compatibility
+# OSTF compatibility
 
-OSTF Composer is designed around the Open Song Timeline Format.
+OSTF Composer v1.1 supports the OSTF 3.x family and OSTF 4.x compatibility workflow.
 
-The device is intended to preserve song information that is not directly being edited.
+The device can work with older OSTF song structures while also recognizing OSTF 4 data.
+
+OSTF 4 introduces additional musical performance information such as:
+
+- Control Change data
+- Program Change
+- Pitch Bend
+- Channel Pressure
+- Polyphonic Pressure
+- MIDI channel information
+- MIDI bus information
+- Multiple melody tracks
+- Multiple lyric voices
+
+OSTF Composer is primarily a chord, structure, voicing, and composition editor.
+
+It therefore does **not** attempt to reinterpret or regenerate every OSTF 4 performance field.
+
+Instead, OSTF 4 information that Composer does not directly edit is preserved whenever possible.
 
 Important principles include:
 
 - Do not silently discard unknown OSTF data
 - Preserve unrelated song information
-- Preserve lyrics and external track information when possible
-- Avoid destructive timeline changes when dependent data cannot be safely updated
-- Preserve OSTF 3.5 note semantics such as `fixedTrigger`
-- Mark dependent information stale when appropriate instead of pretending it is still current
+- Preserve MIDI performance information that Composer does not edit
+- Preserve lyrics and additional voices where possible
+- Preserve external track information
+- Avoid destructive timeline transformations
+- Stop saving if protected OSTF 4 information changes unexpectedly
+- Do not downgrade OSTF 4 songs to OSTF 3.x during normal editing
+- Allow compatible future OSTF 4.x files when the inherited core structure remains understandable
 
-OSTF project:
+OSTF Composer favors preservation over aggressive conversion.
 
-https://github.com/yoh-nak/Open-Song-Timeline-Format-3.5
+---
 
-## Requirements
+# Non-destructive design
 
-- Ableton Live
-- Max for Live
-- A supported Windows or macOS environment
-- MIDI track and instrument when auditioning through Live
+OSTF Composer is designed to avoid silently changing information that the current operation does not need to modify.
 
-## Installation
+Examples include:
 
-1. Download `OSTF_Composer_v1.0.amxd`.
+- Captured Live MIDI is never edited in place
+- Capture source MIDI remains separate from generated voicings
+- Existing Live notes are preserved during append operations
+- New Arrangement clips are not intended to silently overwrite existing clips
+- Unrelated OSTF data is preserved where possible
+- Unsupported OSTF data is not automatically discarded
+- Protected OSTF 4 performance information is checked during save operations
+- Unsafe transformations can be blocked rather than applied
+
+Always keep backups of important project and OSTF files.
+
+---
+
+# Typical workflow
+
+A common OSTF Composer workflow is:
+
+1. Create or open an OSTF song.
+2. Build or refine the song structure.
+3. Generate whole-song chord progression ideas.
+4. Audition and select a progression.
+5. Refine individual sections with Section Composer.
+6. Generate whole-song voicing candidates.
+7. Compare Original and Candidate versions.
+8. Adopt the desired sections.
+9. Edit voicings in the piano roll if necessary.
+10. Commit the result.
+11. Send MIDI to Ableton Live.
+12. Continue arranging or editing in Live.
+13. Capture edited MIDI back into Composer if structural reconstruction is needed.
+14. Save the updated OSTF file.
+
+This allows OSTF Composer to act as a bridge between structured composition and practical DAW production.
+
+---
+
+# Installation
+
+1. Download:
+
+   `OSTF_Composer_v1.1.amxd`
+
 2. Place the device in your Max for Live device folder or another location accessible from Ableton Live.
+
 3. Drag OSTF Composer onto a MIDI track.
-4. Click **Open** on the device view.
+
+4. Click **Open** in the device view.
+
 5. The OSTF Composer editor window will open.
 
-## Basic usage
+---
 
-### Start a new song
+# Basic usage
 
-Use **New** and create your song structure manually or choose a template.
+## Start a new song
 
-Add sections such as:
+Click **New**.
+
+Create the song structure manually or use the available structure tools.
+
+Typical sections include:
 
 - Intro
 - Verse
 - Pre-Chorus
 - Chorus
 - Bridge
+- Final Chorus
 - Outro
 
-### Generate chord progressions
+Custom sections can also be created.
 
-Click **Compose song** to open the Whole Song Composer.
+---
 
-Choose the desired:
+## Open an OSTF song
+
+Click **Open** and select an OSTF file.
+
+Supported OSTF song information is loaded into Composer while unrelated compatible information is preserved where possible.
+
+OSTF files can also be opened using the supported drag-and-drop workflow where available.
+
+---
+
+## Generate chord progressions
+
+Click **Compose song**.
+
+Configure the desired generation settings such as:
 
 - Genre
 - Mood
@@ -255,56 +475,113 @@ Choose the desired:
 - Pattern focus
 - Variation
 
-Generate multiple ideas, click a progression card to audition it, and apply the progression you prefer.
+Generate several ideas.
 
-### Generate voicings
+Audition the candidates and apply the progression you prefer.
+
+---
+
+## Generate voicings
 
 Open **Voicing Studio**.
 
-Choose the desired accompaniment and voice-leading settings, then generate whole-song voicings.
+Configure accompaniment and voice-leading options.
 
-Audition the candidate before committing it.
+Generate whole-song voicing candidates.
 
-### Capture MIDI
+Compare:
 
-1. Double-click the source MIDI clip in Ableton Live.
-2. Open the MIDI Capture workspace.
-3. Click **Capture MIDI**.
-4. Drag across the Capture Timeline to select a range.
+- Original
+- Candidate
+
+Choose the sections that should adopt the candidate, then commit the result.
+
+---
+
+## Edit voicings
+
+Use the Voicing Studio piano roll to:
+
+- Select notes
+- Move notes
+- Add or remove notes
+- Inspect harmonic roles
+- Audition changes
+- Commit the edited result
+
+---
+
+## Capture MIDI
+
+1. Open or select the source MIDI clip in Ableton Live.
+2. Open the Capture workspace.
+3. Capture the MIDI.
+4. Select a range in the Capture Timeline.
 5. Assign the range to an OSTF section.
-6. Repeat as needed.
-7. Commit the assigned ranges.
+6. Repeat as necessary.
+7. Commit the reconstructed structure.
 
-### Send MIDI to Live
+The original Live MIDI remains unchanged.
 
-Use **Send to Live** from Voicing Studio.
+---
 
-Choose:
+## Send MIDI to Live
 
-- Destination track
+Open the **Output** section in Voicing Studio and click **Send to Live**.
+
+### Existing selected MIDI clip
+
+Use the selected-clip option to append notes to an existing MIDI clip.
+
+Choose the clip bar where the new material should begin.
+
+Existing notes are preserved.
+
+### New MIDI clip
+
+Choose **Create a new MIDI clip**.
+
+Configure:
+
+- MIDI track
 - Scope
-- Clip split behavior
+- Destination
+- Clip split
 - Start position
 
-Review the output and click **Write to Live**.
+For Arrangement output, choose **Specific Live bar** when you want exact placement.
 
-## Safety and non-destructive behavior
+Enter the desired Live bar and click **Write to Live**.
 
-OSTF Composer is designed to avoid silently changing data that the current operation does not need to modify.
+---
 
-Examples:
+# Version history
 
-- Captured Live MIDI is never edited in place
-- Unassigned Capture ranges are ignored
-- Existing Live clips are not overwritten without explicit action
-- OSTF lyrics and unrelated tracks are preserved when possible
-- Unsupported timeline transformations are blocked instead of applied destructively
+## v1.1
 
-Always keep backups of important project files.
+Current release.
 
-## Version
+Main changes:
 
-### v1.0
+- OSTF 4.x compatibility
+- Preservation of OSTF 4 performance and multi-voice information not directly edited by Composer
+- Improved future OSTF 4.x compatibility handling
+- Voicing Studio UI restructuring
+- Clearer separation between primary modes and secondary voicing controls
+- Improved Candidate / Audition / Commit workflow
+- Consolidated Send to Live workflow
+- Existing selected MIDI clip append workflow
+- Specific clip-bar placement for append operations
+- Specific Live-bar placement for new Arrangement clips
+- Improved protection against accidental clip replacement
+- Internal `__unset__` values hidden from user-facing inherited-value displays
+- Continued MIDI Capture workflow stability
+- Direct experimental MIDI file export removed for release stability
+- General stability and UI cleanup
+
+---
+
+## v1.0
 
 Initial public release.
 
@@ -318,55 +595,97 @@ Main features:
 - MIDI Capture from Ableton Live
 - Section reconstruction from captured MIDI
 - MIDI output back to Live
-- OSTF 3.5-oriented metadata and note handling
 - Transposition support
 - Undo / Redo
 - Non-destructive editing safeguards
 
-## Known considerations
+---
 
-OSTF Composer combines a large number of song editing, MIDI capture, Live API, and OSTF state-management functions.
+# Known considerations
 
-If you encounter a repeatable issue, please include:
+OSTF Composer combines song editing, MIDI capture, Live API communication, harmony generation, voicing generation, and OSTF state management in a single Max for Live device.
 
+If you encounter a repeatable problem, please include:
+
+- OSTF Composer version
 - Ableton Live version
 - Max version
 - Operating system
-- Steps needed to reproduce the issue
+- Steps required to reproduce the issue
 - OSTF file if relevant
 - Screenshot of the problem
 - Max Console output if available
 
-This makes problems much easier to reproduce and fix.
+Clear reproduction steps make issues significantly easier to diagnose and fix.
 
-## License
+---
+
+# Requirements
+
+- Ableton Live
+- Max for Live
+- Windows or macOS environment supported by your Ableton Live / Max installation
+- MIDI track and MIDI instrument when auditioning through Live
+
+---
+
+# Open Song Timeline Format
+
+OSTF Composer is part of the **Open Song Timeline Format** ecosystem.
+
+OSTF is intended to provide a structured representation of songs that can include information such as:
+
+- Song structure
+- Sections
+- Chord progressions
+- Melodies
+- Lyrics
+- Arrangement information
+- MIDI performance data
+- Musical metadata
+
+See the OSTF project repositories for format specifications and examples.
+
+---
+
+# License
 
 No license is currently bundled with this repository unless one is added separately.
 
-If you plan to reuse, redistribute, or modify the project, please check the repository license status first.
+Before reusing, redistributing, or modifying the project, check the repository license status.
 
-## Support the project
+---
 
-If OSTF Composer or the wider OSTF project is useful to you, you can support development here:
+# Support the project
+
+If OSTF Composer or the wider OSTF ecosystem is useful to you, you can support continued development here:
 
 **Buy Me a Coffee**
 
 https://buymeacoffee.com/yohsukenak
 
-Support helps continued development, testing, documentation, and maintenance of the OSTF ecosystem.
+Support helps continued development, testing, documentation, compatibility work, and maintenance of the OSTF ecosystem.
 
-## Links
+---
 
-### Open Song Timeline Format
+# Links
 
-https://github.com/yoh-nak/Open-Song-Timeline-Format-3.5
+## OSTF Composer
 
-### Buy Me a Coffee
+https://github.com/yoh-nak/OSTF-Composer-M4L
+
+## Open Song Timeline Format
+
+https://github.com/yoh-nak/
+
+## Buy Me a Coffee
 
 https://buymeacoffee.com/yohsukenak
 
-## Author
+---
+
+# Author
 
 Developed by **yoh-nak**.
 
-OSTF Composer is part of the broader Open Song Timeline Format ecosystem for structured songwriting, composition, arrangement, and DAW interoperability.
+OSTF Composer is part of the broader Open Song Timeline Format ecosystem for structured songwriting, composition, arrangement, MIDI workflows, and DAW interoperability.
