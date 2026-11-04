@@ -1,14 +1,19 @@
 # OSTF Composer for Max for Live
 
-**OSTF Composer** is a Max for Live songwriting, harmony, voicing, and MIDI workflow tool built around the **Open Song Timeline Format (OSTF)**.
+**OSTF Composer** is a Max for Live songwriting, chord composition, harmony exploration, review, voicing, MIDI capture, and Ableton Live workflow tool built around the **Open Song Timeline Format (OSTF)**.
 
-It is designed for composers, songwriters, arrangers, and producers who want to build song structures, create chord progressions, generate playable voicings, capture MIDI from Ableton Live, reconstruct song sections, and move structured musical ideas between OSTF and Live.
+It is designed for composers, songwriters, arrangers, and producers who want to build complete song structures, generate and refine chord progressions, explore harmony across song sections, review finished harmony in the context of written melodies and arrangement parts, create playable voicings, capture MIDI from Ableton Live, reconstruct song sections, and move structured musical ideas between OSTF and Live.
 
 OSTF Composer combines:
 
 - Song structure editing
 - Whole-song chord composition
-- Section-level harmony generation
+- Section-level chord generation
+- Cross-section harmony exploration
+- Arrangement-aware harmony review
+- Chord progression suggestions
+- Genre- and section-role-aware generation
+- Modulation and harmonic transition ideas
 - Voicing generation and editing
 - MIDI capture from Ableton Live
 - Section reconstruction
@@ -16,7 +21,7 @@ OSTF Composer combines:
 - OSTF 3.x / 4.x compatibility
 - Non-destructive OSTF data preservation
 
-Version **1.1** focuses on OSTF 4 compatibility, a more structured Voicing Studio workflow, improved Live output placement, and stability.
+Version **2.0** significantly expands chord-generation quality, song-wide harmonic context, suggestion ranking, section-aware harmony workflows, and introduces the new **Review Studio** for refining already-developed songs without unnecessarily rewriting them.
 
 ---
 
@@ -29,13 +34,15 @@ Create and edit structured songs using OSTF.
 You can:
 
 - Create and rename song sections
-- Build structures such as Intro, Verse, Pre-Chorus, Chorus, Bridge, Final Chorus, Outro, and custom sections
+- Build structures such as Intro, Verse, Pre-Chorus, Chorus, Drop, Breakdown, Bridge, Solo, Final Chorus, Outro, and custom sections
 - Change section lengths
 - Edit chord timelines
+- Split chord regions where needed
 - Reorder song sections
 - Duplicate and delete sections
 - Preserve surrounding OSTF song data while editing
 - Work with song-level key, tempo, meter, genre, and metadata
+- Work with section-local key maps
 - Save edited songs back to OSTF
 
 OSTF Composer is intended to edit the musical information it understands while preserving unrelated OSTF information wherever possible.
@@ -46,7 +53,7 @@ OSTF Composer is intended to edit the musical information it understands while p
 
 Use **Compose song** to generate chord progression ideas across the complete arrangement.
 
-Generation can take into account musical context such as:
+Generation can take into account:
 
 - Genre
 - Mood
@@ -55,9 +62,12 @@ Generation can take into account musical context such as:
 - Section roles
 - Local key maps
 - Neighboring sections
+- Song structure
 - Pattern focus
 - Variation level
 - Harmonic continuity
+- Cadence behavior
+- Section-to-section tension and release
 
 Multiple progression ideas can be generated and compared before committing changes.
 
@@ -65,11 +75,80 @@ Progressions can be auditioned before they are applied.
 
 The whole-song workflow is designed to consider the relationship between sections rather than treating every section as an isolated four-chord loop.
 
+Version 2.0 improves the ranking of generated ideas so that the first suggestions remain closer to the selected genre and section role.
+
+Additional exploration through **More ideas** can gradually move toward broader harmonic alternatives.
+
+---
+
+# Genre-aware generation
+
+OSTF Composer includes genre-aware progression behavior for styles including:
+
+- Pop
+- J-Pop
+- Rock
+- Ballad
+- RnB
+- Neo Soul
+- House
+- Deep House
+- Tech House
+- Techno
+- Minimal Techno
+- Trance
+- EDM
+- Jazz
+- Metal
+- Ambient
+- Additional compatible genre definitions
+
+Version 2.0 improves separation between electronic genres.
+
+House, Tech House, Techno, Trance, and EDM are no longer treated as a single generic electronic style during initial suggestion ranking.
+
+RnB and Neo Soul also receive more dedicated progression behavior instead of being dominated by generic Jazz harmony.
+
+Genre selection influences generation and suggestion ranking, but does not silently rewrite unrelated OSTF information.
+
+---
+
+# Section-role-aware generation
+
+Chord generation can respond to the musical role of a section.
+
+Supported roles include concepts such as:
+
+- Intro
+- Verse
+- Pre-Chorus
+- Chorus
+- Drop
+- Breakdown
+- Bridge
+- Solo
+- Outro
+- Custom or inferred section roles
+
+Section roles affect behavior such as:
+
+- Harmonic stability
+- Tension
+- Cadence strength
+- Dominant preparation
+- Repetition
+- Resolution
+- Contrast
+- Finality
+- Energy
+
+Version 2.0 gives Drop, Breakdown, and Solo dedicated generation behavior instead of relying on Verse-style fallback patterns.
+
 ---
 
 # Section Composer
 
-Section Composer provides more detailed harmonic development for individual song sections.
+Section Composer provides detailed harmonic development for individual song sections.
 
 Available approaches include:
 
@@ -80,12 +159,311 @@ Available approaches include:
 - Cadence ideas
 - Harmonic color
 - Variation
-- Modulation
+- Borrowed harmony
+- Applied dominants
+- Backdoor movement
+- Chromatic movement
+- Tritone-related ideas
+- Slash chords
+- Line cliché
+- Same-root harmonic movement
+- Suspension and release
+- Modulation pathways
 - Reverse analysis
+- Complete phrase generation
 
 Generated ideas can be auditioned before being committed.
 
-This makes it possible to establish the overall structure with Whole-Song Composition and then refine individual sections where necessary.
+This makes it possible to establish the overall structure with Whole-Song Composition and then develop individual sections where necessary.
+
+---
+
+# Harmonic Depth
+
+Generation can be limited or expanded through **Harmonic Depth**.
+
+Typical levels include:
+
+- Auto by genre
+- Core progressions
+- Color / borrowing
+- Advanced harmony
+
+This allows a simple Pop section and a more harmonically complex Neo Soul or Jazz section to use different harmonic vocabularies without requiring separate devices.
+
+---
+
+# Pattern Focus
+
+Pattern Focus can direct generation toward specific harmonic ideas.
+
+Available directions include:
+
+- Genre / role aware
+- Cadences
+- Applied dominants
+- Borrowed harmony
+- Backdoor movement
+- Chromatic movement
+- Tritone movement
+- Extended chord colors
+- 6th / sus / add / 9th colors
+- Slash chords and bass movement
+- Line cliché
+- Same-root motion
+- Genre color
+- Suspension / tension → release
+- Complete phrase generation
+
+Pattern Focus is intended as a creative direction rather than a destructive transformation.
+
+---
+
+# Harmony Studio
+
+**Harmony Studio** is designed for exploring alternative harmonic ideas across existing song sections.
+
+Unlike Section Composer, which focuses primarily on generating one section, Harmony Studio can examine relationships across multiple sections and generate alternative harmonic paths.
+
+Harmony Studio can work with:
+
+- Existing section progressions
+- Neighboring sections
+- Section roles
+- Key maps
+- Harmonic functions
+- Bass-root motion
+- Cadences
+- Borrowed harmony
+- Applied dominants
+- Chromatic movement
+- Tritone relationships
+- Modulation pathways
+- Tension and resolution
+- Recurring sections
+- Whole-song harmonic continuity
+
+Harmony Studio is intended for exploration.
+
+It can suggest significantly different harmonic directions while preserving the original material until the user explicitly applies a result.
+
+---
+
+# Theory Map
+
+Harmony Studio includes interactive harmonic maps for exploring chord relationships.
+
+Available map views include:
+
+- Circle of Fifths
+- Harmonic Functions
+- Tonnetz · P / R / L
+- Camelot Wheel
+
+The map can be used to inspect and explore harmonic relationships visually.
+
+Tonnetz includes Neo-Riemannian transformations such as:
+
+- P — Parallel
+- L — Leading-tone exchange
+- R — Relative
+
+These visual tools are intended to complement harmonic suggestions rather than replace the chord-generation engine.
+
+---
+
+# Modulation and harmonic transitions
+
+OSTF Composer can generate modulation pathways and section-to-section harmonic transition ideas.
+
+Possible approaches include:
+
+- Direct modulation
+- Pivot relationships
+- Dominant preparation
+- Secondary dominant movement
+- Chromatic approaches
+- Tritone-related movement
+- Common-tone relationships
+- Borrowed harmony
+- Transition chords
+
+Existing OSTF key maps are treated as intentional musical information.
+
+Chord suggestions do not silently rewrite the key map unless the user explicitly performs an operation that changes it.
+
+---
+
+# Review Studio
+
+Version 2.0 introduces **Review Studio**.
+
+Review Studio is designed for songs where the overall harmony is already substantially complete.
+
+Its purpose is not to regenerate the song.
+
+Instead, it looks for small opportunities to improve an existing chord progression while preserving the current musical identity.
+
+Review Studio can be opened globally or directly from an individual section.
+
+When opened from a section, that section is selected as the initial review target while the rest of the song can still be used as context.
+
+Review Studio can analyze:
+
+- Current chord progression
+- Section role
+- Neighboring sections
+- Recurring sections
+- Whole-song harmonic similarity
+- Key maps
+- Melody notes
+- Multiple declared melody tracks
+- Bass-related notes
+- Supporting pitched arrangement tracks
+- Chord duration
+- Harmonic rhythm
+- Strong beats
+- Sustained notes
+- Written arrangement context
+
+Possible review ideas include:
+
+- Keep the current progression
+- Improve section handoff
+- Improve bass direction
+- Add restrained harmonic color
+- Add a melody-supported tension
+- Add a slash chord supported by the written bass
+- Refine one chord to better fit the arrangement
+- Create an A → A' variation
+- Reduce unnecessary repetition
+- Improve contrast between similar sections
+- Add tension and release
+- Refine a transition into an existing key change
+- Split a long chord region when the written arrangement supports a harmonic change
+- Offer an optional chromatic alternative
+
+Review Studio is deliberately conservative.
+
+It is designed to improve a finished song rather than rewrite it.
+
+---
+
+# Arrangement-aware harmony review
+
+When OSTF contains melody and other pitched arrangement tracks, Review Studio can use those notes as evidence.
+
+The analysis can consider:
+
+- Primary melody
+- Additional melody tracks
+- Strong melody notes
+- Sustained melody notes
+- Bass tracks
+- Lowest supporting notes
+- Other pitched arrangement parts
+- Beat position
+- Note duration
+- Chord overlap
+
+Short decorative notes and likely passing tones are intentionally weighted less strongly than structural notes.
+
+This reduces the chance that a brief melodic decoration causes an unnecessary chord change.
+
+Bass-related evidence is also weighted more strongly than unrelated inner arrangement notes.
+
+---
+
+# Melody-supported chord color
+
+Review Studio can identify cases where the written melody already implies a chord extension.
+
+For example, if a strong sustained melody note functions naturally as a 9th, 11th, 13th, major 7th, or other available color, Composer may suggest representing that sound in the chord symbol.
+
+The written melody itself is not changed.
+
+The suggestion changes only the harmonic interpretation unless the user explicitly applies another editing operation.
+
+---
+
+# Chord-boundary refinement
+
+Review Studio can optionally suggest splitting a long chord event when the written arrangement clearly changes during the chord.
+
+For example, a four-beat chord may become:
+
+- Original chord for beats 1–2
+- Related or extended chord for beats 3–4
+
+This happens inside the existing time range.
+
+The section length does not change.
+
+Other OSTF tracks are not shifted.
+
+Chord-boundary refinement is optional and can be disabled.
+
+---
+
+# Review confidence and risk
+
+Version 2.0 adds quality gating to Review Studio.
+
+Suggestions can be evaluated using concepts such as:
+
+- Benefit
+- Confidence
+- Risk
+- Overall review score
+
+Low-confidence or unnecessarily high-risk changes can be excluded from the normal automatic review.
+
+If the current progression is already appropriate, Review Studio is allowed to return:
+
+**Keep the current progression**
+
+instead of forcing a change.
+
+Experimental or surprising chromatic ideas remain available when explicitly requested, but they are not intended to dominate normal review results.
+
+---
+
+# Song-wide review
+
+Review Studio can compare a selected section with the rest of the song.
+
+This can detect relationships such as:
+
+- Verse and Chorus using almost identical harmonic shapes
+- Repeated Chorus sections with no development
+- Verse 2 repeating Verse 1 exactly
+- Similar functional progressions in different keys
+- Missing contrast between major structural sections
+- Existing key-map transitions
+- Song-wide harmonic energy imbalance
+
+This allows a single section to be reviewed in the context of the complete song.
+
+---
+
+# Harmonic energy
+
+Review Studio can estimate relative harmonic energy across sections.
+
+Section roles can imply different expected behaviors.
+
+For example:
+
+- Intro may remain relatively stable
+- Verse may remain restrained
+- Pre-Chorus may build tension
+- Chorus may provide stronger arrival or energy
+- Drop may emphasize impact or repetition
+- Breakdown may reduce density
+- Final Chorus may maintain or increase intensity
+- Outro may provide stronger finality
+
+This is used as supporting review evidence rather than as a rigid compositional rule.
 
 ---
 
@@ -93,7 +471,23 @@ This makes it possible to establish the overall structure with Whole-Song Compos
 
 Voicing Studio generates and edits playable chord voicings based on the current OSTF chord progression.
 
-Version 1.1 reorganizes Voicing Studio so that major tasks, secondary controls, and output operations are more clearly separated.
+Voicing Studio is intentionally separate from Review Studio.
+
+Review Studio works primarily with:
+
+- Chord identity
+- Chord color
+- Slash-bass interpretation
+- Harmonic boundaries
+
+Voicing Studio handles:
+
+- Actual note placement
+- Register
+- Voice distribution
+- Inversions
+- Left-hand / right-hand arrangement
+- Voice leading
 
 Main capabilities include:
 
@@ -115,9 +509,34 @@ Main capabilities include:
 - Manual piano-roll editing
 - Commit / discard workflow
 
-Related pitch controls are grouped together instead of being treated as unrelated top-level modes.
+---
 
-MIDI Capture remains a separate workflow and is not mixed automatically into generated voicings.
+# Voicing presets
+
+Voicing Studio includes **Voicing presets**.
+
+These are not song Genre settings.
+
+They describe accompaniment and voicing behavior.
+
+Examples may include:
+
+- Pop-style accompaniment
+- J-Pop two-hand comping
+- Rock simple keys
+- Ballad smooth accompaniment
+- House compact right hand
+- Techno minimal
+- Trance wide voicings
+- Jazz solo piano
+- Jazz rootless trio
+- Neo Soul guide tones
+- Funk tight comping
+- Cinematic wide register
+
+The current song Genre may influence which Voicing preset is recommended.
+
+Changing Genre does not automatically overwrite an already-selected Voicing preset.
 
 ---
 
@@ -155,7 +574,7 @@ You can:
 - Work with individual sections
 - Work with the whole song
 
-Notes are visually differentiated by harmonic function so that roots, thirds, fifths, sevenths, tensions, and other chord roles are easier to identify.
+Notes can be visually differentiated by harmonic role so that roots, thirds, fifths, sevenths, tensions, and other chord tones are easier to identify.
 
 When chord information changes, harmonic interpretation can be updated accordingly.
 
@@ -172,7 +591,7 @@ The Capture workflow can:
 - Read MIDI from Live
 - Display captured MIDI
 - Analyze detected chords
-- Select ranges from the captured material
+- Select ranges from captured material
 - Assign ranges to OSTF sections
 - Create new sections
 - Extend existing sections
@@ -180,8 +599,6 @@ The Capture workflow can:
 - Reconstruct an OSTF song structure from existing MIDI
 
 Captured MIDI is intentionally kept separate from Voicing Studio data.
-
-Version 1.1 retains the established MIDI Capture workflow without major structural changes.
 
 ---
 
@@ -234,9 +651,9 @@ Existing notes are preserved.
 
 This is an **append operation**, not a destructive replacement operation.
 
-The insertion point can be specified by clip bar so that generated material can be added at a defined location inside the selected clip.
+The insertion point can be specified by clip bar.
 
-For example:
+Examples:
 
 - Clip bar 1
 - Clip bar 5
@@ -261,7 +678,7 @@ Options include:
 
 For Arrangement output, a specific Live bar can be entered.
 
-For example:
+Example:
 
 **Live start bar: 37**
 
@@ -287,9 +704,7 @@ Output information is shown before writing where possible.
 
 # MIDI file export
 
-OSTF Composer v1.1 does **not** include direct Standard MIDI File export.
-
-An experimental MIDI export implementation was evaluated during development but was removed before the v1.1 release because it did not meet the required stability standard.
+OSTF Composer v2.0 does **not** include direct Standard MIDI File export.
 
 For reliable MIDI file export:
 
@@ -326,6 +741,7 @@ This includes operations such as:
 - Chord changes
 - Voicing changes
 - Song structure operations
+- Review Studio applications
 - Candidate commits
 - Other Composer editing actions
 
@@ -335,13 +751,13 @@ Undo behavior is intentionally tied to committed editing operations rather than 
 
 # OSTF compatibility
 
-OSTF Composer v1.1 supports the OSTF 3.x family and OSTF 4.x compatibility workflow.
+OSTF Composer v2.0 supports the OSTF 3.x family and OSTF 4.x compatibility workflow.
 
 The device can work with older OSTF song structures while also recognizing OSTF 4 data.
 
-OSTF 4 introduces additional musical performance information such as:
+OSTF 4 can include additional musical performance information such as:
 
-- Control Change data
+- Control Change
 - Program Change
 - Pitch Bend
 - Channel Pressure
@@ -351,7 +767,7 @@ OSTF 4 introduces additional musical performance information such as:
 - Multiple melody tracks
 - Multiple lyric voices
 
-OSTF Composer is primarily a chord, structure, voicing, and composition editor.
+OSTF Composer is primarily a chord, structure, harmony, review, voicing, and composition editor.
 
 It therefore does **not** attempt to reinterpret or regenerate every OSTF 4 performance field.
 
@@ -379,6 +795,9 @@ OSTF Composer is designed to avoid silently changing information that the curren
 
 Examples include:
 
+- Review Studio ideas do not modify the song until Apply is used
+- Melody and arrangement notes remain unchanged during harmony review
+- Voicings are not automatically regenerated by Review Studio
 - Captured Live MIDI is never edited in place
 - Capture source MIDI remains separate from generated voicings
 - Existing Live notes are preserved during append operations
@@ -394,24 +813,27 @@ Always keep backups of important project and OSTF files.
 
 # Typical workflow
 
-A common OSTF Composer workflow is:
+A common OSTF Composer v2.0 workflow is:
 
 1. Create or open an OSTF song.
 2. Build or refine the song structure.
-3. Generate whole-song chord progression ideas.
+3. Generate whole-song chord progression ideas with **Compose song**.
 4. Audition and select a progression.
-5. Refine individual sections with Section Composer.
-6. Generate whole-song voicing candidates.
-7. Compare Original and Candidate versions.
-8. Adopt the desired sections.
-9. Edit voicings in the piano roll if necessary.
-10. Commit the result.
-11. Send MIDI to Ableton Live.
-12. Continue arranging or editing in Live.
-13. Capture edited MIDI back into Composer if structural reconstruction is needed.
-14. Save the updated OSTF file.
+5. Develop individual sections with **Section Composer**.
+6. Explore alternative cross-section harmony in **Harmony Studio**.
+7. Review the completed progression with **Review Studio**.
+8. Apply only the review ideas that improve the song.
+9. Generate whole-song voicing candidates in **Voicing Studio**.
+10. Compare Original and Candidate versions.
+11. Adopt the desired sections.
+12. Edit voicings in the piano roll if necessary.
+13. Commit the result.
+14. Send MIDI to Ableton Live.
+15. Continue arranging or editing in Live.
+16. Capture edited MIDI back into Composer if structural reconstruction is needed.
+17. Save the updated OSTF file.
 
-This allows OSTF Composer to act as a bridge between structured composition and practical DAW production.
+This allows OSTF Composer to act as a bridge between structured songwriting, harmonic development, arrangement review, and practical DAW production.
 
 ---
 
@@ -419,7 +841,7 @@ This allows OSTF Composer to act as a bridge between structured composition and 
 
 1. Download:
 
-   `OSTF_Composer_v1.1.amxd`
+   `OSTF_Composer_v2.0.amxd`
 
 2. Place the device in your Max for Live device folder or another location accessible from Ableton Live.
 
@@ -445,7 +867,10 @@ Typical sections include:
 - Verse
 - Pre-Chorus
 - Chorus
+- Drop
+- Breakdown
 - Bridge
+- Solo
 - Final Chorus
 - Outro
 
@@ -467,11 +892,12 @@ OSTF files can also be opened using the supported drag-and-drop workflow where a
 
 Click **Compose song**.
 
-Configure the desired generation settings such as:
+Configure generation settings such as:
 
 - Genre
 - Mood
 - Harmonic color
+- Harmonic depth
 - Pattern focus
 - Variation
 
@@ -479,13 +905,68 @@ Generate several ideas.
 
 Audition the candidates and apply the progression you prefer.
 
+Initial suggestions prioritize compatibility with the selected genre and section roles.
+
+Use **More ideas** when you want to explore progressively broader alternatives.
+
+---
+
+## Develop a section
+
+Click **Compose** in a section header.
+
+Section Composer opens with that section as its target.
+
+Use the available harmonic controls to generate, audition, compare, and apply alternatives.
+
+---
+
+## Explore harmony across sections
+
+Open **Harmony Studio**.
+
+Choose the range or sections you want to explore.
+
+Use harmonic theory, neighboring sections, section roles, key relationships, and visual theory maps to explore alternative harmonic paths.
+
+Harmony Studio is intended for broader harmonic exploration than Review Studio.
+
+---
+
+## Review a finished progression
+
+Open **Review Studio** from the main controls or from a section header.
+
+When opened from a section, that section is selected initially.
+
+Choose the sections to review and configure options such as:
+
+- Review focus
+- Maximum changes
+- OSTF note context
+- Chord-boundary refinement
+
+Click **Review selected sections**.
+
+Review the proposed ideas.
+
+Audition:
+
+- Original
+- Idea
+- A/B comparison
+
+Apply only the ideas you want to keep.
+
+Review Studio may also recommend keeping the existing progression unchanged.
+
 ---
 
 ## Generate voicings
 
 Open **Voicing Studio**.
 
-Configure accompaniment and voice-leading options.
+Configure Voicing presets and voice-leading options.
 
 Generate whole-song voicing candidates.
 
@@ -557,9 +1038,51 @@ Enter the desired Live bar and click **Write to Live**.
 
 # Version history
 
-## v1.1
+## v2.0
 
 Current release.
+
+Main changes:
+
+- New Review Studio
+- Arrangement-aware harmony review
+- Melody-aware tension suggestions
+- Bass-aware slash-chord suggestions
+- Supporting-track harmony analysis
+- Optional chord-boundary refinement
+- Whole-song section comparison
+- Harmonic energy analysis
+- Review Benefit / Confidence / Risk scoring
+- Low-confidence suggestion filtering
+- Keep-current-progression result when no change is necessary
+- Improved whole-song chord composition
+- Improved Section Composer generation
+- Improved genre-aware progression ranking
+- Improved section-role-aware generation
+- Improved House / Tech House / Techno / Trance / EDM separation
+- Improved RnB and Neo Soul generation
+- Improved Metal and Ambient progression behavior
+- Dedicated Drop, Breakdown, and Solo generation roles
+- Improved modulation pathway suggestions
+- Improved cross-section harmonic exploration
+- Improved Theory Map behavior
+- Circle of Fifths, Harmonic Functions, Tonnetz, and Camelot map switching
+- Improved Tonnetz layout
+- Improved responsive section controls
+- Resizable Review Studio layout
+- Improved Voicing preset labeling and genre recommendation behavior
+- Improved minor-key seventh chord generation
+- Improved initial Suggest ranking
+- Broader exploration through More ideas
+- Extensive generation and suggestion QA
+- OSTF 3.x / 4.x compatibility retained
+- Non-destructive OSTF data preservation retained
+
+Release QA included large-scale progression and suggestion generation across multiple genres, roles, keys, and modulation paths.
+
+---
+
+## v1.1
 
 Main changes:
 
@@ -574,7 +1097,6 @@ Main changes:
 - Specific clip-bar placement for append operations
 - Specific Live-bar placement for new Arrangement clips
 - Improved protection against accidental clip replacement
-- Internal `__unset__` values hidden from user-facing inherited-value displays
 - Continued MIDI Capture workflow stability
 - Direct experimental MIDI file export removed for release stability
 - General stability and UI cleanup
@@ -603,7 +1125,7 @@ Main features:
 
 # Known considerations
 
-OSTF Composer combines song editing, MIDI capture, Live API communication, harmony generation, voicing generation, and OSTF state management in a single Max for Live device.
+OSTF Composer combines song editing, MIDI capture, Live API communication, harmony generation, song-wide review, voicing generation, and OSTF state management in a single Max for Live device.
 
 If you encounter a repeatable problem, please include:
 
@@ -639,9 +1161,13 @@ OSTF is intended to provide a structured representation of songs that can includ
 - Sections
 - Chord progressions
 - Melodies
+- Multiple melody tracks
 - Lyrics
+- Multiple lyric voices
 - Arrangement information
 - MIDI performance data
+- Key changes
+- Tempo changes
 - Musical metadata
 
 See the OSTF project repositories for format specifications and examples.
@@ -688,4 +1214,4 @@ https://buymeacoffee.com/yohsukenak
 
 Developed by **yoh-nak**.
 
-OSTF Composer is part of the broader Open Song Timeline Format ecosystem for structured songwriting, composition, arrangement, MIDI workflows, and DAW interoperability.
+OSTF Composer is part of the broader Open Song Timeline Format ecosystem for structured songwriting, composition, harmony exploration, arrangement review, MIDI workflows, and DAW interoperability.
